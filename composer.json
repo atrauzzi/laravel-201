@@ -1,0 +1,34 @@
+{
+	"name": "atrauzzi/laravel-201",
+	"description": "Project files for my Laravel 201 presentation.",
+	"keywords": ["presentation", "demo", "laravel"],
+	"license": "MIT",
+	"require": {
+		"laravel/framework": "4.2.*",
+		"tippingcanoe/imager": "2.*",
+		"tippingcanoe/validator": "1.*"
+	},
+	"autoload": {
+		"psr-0": {
+			"Laravel201": "src/"
+		},	
+		"classmap": [
+			"app/database/migrations",
+			"app/database/seeds"
+		]
+	},
+	"scripts": {
+		"post-install-cmd": [
+			"php artisan clear-compiled",
+			"php artisan optimize"
+		],
+		"post-update-cmd": [
+			"php artisan clear-compiled",
+			"php artisan optimize"
+		],
+		"post-create-project-cmd": [
+			"php artisan key:generate"
+		]
+	},
+	"minimum-stability": "dev"
+}
