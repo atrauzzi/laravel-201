@@ -46,7 +46,7 @@
 
 		'mysql' => [
 			'driver'    => 'mysql',
-			'host'      => 'laravel201front',
+			'host'      => 'laravel201front.local',
 			'database'  => 'laravel201',
 			'username'  => 'root',
 			'password'  => '',
@@ -86,7 +86,7 @@
 		'cluster' => false,
 
 		'default' => [
-			'host'     => 'laravel201front',
+			'host'     => 'laravel201front.local',
 			'port'     => 6379,
 			'database' => 0,
 		],
