@@ -73,25 +73,24 @@
     - name: Installing Redis Server
       apt: name=redis-server state=present
 
+    - name: Copying MySQL config
+      copy: src=my.cnf dest=/etc/mysql/ mode=0644
+
     - name: Installing MySQL Server
       apt: name=mysql-server state=present
 
     - name: Allow mysql to see Vagrant files
       action: user name=mysql groups=vagrant append=true
 
-    - name: Copying MySQL config
-      copy: src=my.cnf dest=/etc/mysql/ mode=0644
-      notify: Restart MySQL
-
     - name: Granting root login from anywhere
       mysql_user: name=root priv=*.*:ALL password='' host=% state=present
-      notify: Restart MySQL
 
     - name: Installing PHP MySQL
       apt: name=php5-mysql state=present
 
     - name: Creating MySQL Schema
       mysql_db: name=laravel201 state=present
+      notify: Restart MySQL
 
     - name: Create our VirtualHost
       copy: src=laravel-201.conf dest=/etc/apache2/sites-available/ mode=0644
