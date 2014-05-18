@@ -93,6 +93,12 @@
       notify:
         - Restart Apache
 
+    - name: Run project migrations
+      shell: ./artisan migrate > app/storage/logs/project_migrations.log chdir=/vagrant
+
+    - name: Run Imager migrations
+      shell: ./artisan migrate --package="tippingcanoe/imager" > app/storage/logs/imager_migrations.log chdir=/vagrant
+
   handlers:
     - name: Restart Apache
       service: name=apache2 state=restarted
