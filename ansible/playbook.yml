@@ -2,6 +2,10 @@
 
 - hosts: all
   tasks:
+
+    - name: Installing Avahi
+      apt: name=avahi-daemon state=present
+
     - name: Not being evil and installing PHP JSON
       apt: name=php5-json state=present
 
