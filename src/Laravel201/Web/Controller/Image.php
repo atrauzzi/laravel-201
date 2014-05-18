@@ -8,6 +8,7 @@
 	use Laravel201\Web\Validator\ImageStore;
 	use Laravel201\Web\Validator\ImageBatchStore;
 	//
+	use Illuminate\Http\Response;
 	use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 
@@ -20,7 +21,7 @@
 		protected $view;
 
 		/**
-		 * @param ImageService $imageService
+		 * @param \Laravel201\Service\Image $imageService
 		 * @param \Illuminate\View\Factory $view
 		 */
 		public function __construct(
@@ -41,8 +42,18 @@
 
 		}
 
+		/**
+		 * A simple index action.
+		 *
+		 * @return \Illuminate\Http\Response
+		 */
 		public function index() {
 
+			$images = $this->imageService->find()->paginate(15);
+
+			return new Response($this->view->make('image/index', [
+				'images' => $images
+			]));
 
 		}
 

@@ -58,13 +58,16 @@
 - hosts: front
   tasks:
 
+    - name: Installing Python MySQL
+      apt: name=python-mysqldb state=present
+
     - name: Installing PHP and Apache
       apt: name=libapache2-mod-php5 state=present
 
-    - name: Allow www-data to see Vagrant files.
+    - name: Allow www-data to see Vagrant files
       action: user name=www-data groups=vagrant append=true
 
-    - name: Copying redis config.
+    - name: Copying redis config
       copy: src=redis.conf dest=/etc/redis/ mode=0644
 
     - name: Installing Redis Server
@@ -73,11 +76,19 @@
     - name: Installing MySQL Server
       apt: name=mysql-server state=present
 
+    - name: Allow mysql to see Vagrant files
+      action: user name=mysql groups=vagrant append=true
+
+    - name: Copying MySQL config
+      copy: src=my.cnf dest=/etc/mysql/ mode=0644
+      notify: Restart MySQL
+
+    - name: Granting root login from anywhere
+      mysql_user: name=root priv=*.*:ALL password='' host=% state=present
+      notify: Restart MySQL
+
     - name: Installing PHP MySQL
       apt: name=php5-mysql state=present
-
-    - name: Installing Python MySQL
-      apt: name=python-mysqldb state=present
 
     - name: Creating MySQL Schema
       mysql_db: name=laravel201 state=present
@@ -94,11 +105,14 @@
         - Restart Apache
 
     - name: Run project migrations
-      shell: ./artisan migrate > app/storage/logs/project_migrations.log chdir=/vagrant
+      shell: ./artisan migrate --force > app/storage/logs/project_migrations.log chdir=/vagrant
 
     - name: Run Imager migrations
-      shell: ./artisan migrate --package="tippingcanoe/imager" > app/storage/logs/imager_migrations.log chdir=/vagrant
+      shell: ./artisan migrate --force --package="tippingcanoe/imager" > app/storage/logs/imager_migrations.log chdir=/vagrant
 
   handlers:
     - name: Restart Apache
       service: name=apache2 state=restarted
+
+    - name: Restart MySQL
+      service: name=mysql state=restarted

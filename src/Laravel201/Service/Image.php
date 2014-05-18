@@ -2,6 +2,8 @@
 
 	use TippingCanoe\Imager\Service as Imager;
 	use Illuminate\Queue\QueueManager;
+	//
+	use TippingCanoe\Imager\Model\Image as ImageModel;
 
 
 	class Image {
@@ -32,6 +34,15 @@
 		 */
 		public function getById($id) {
 			return $this->imager->getById($id);
+		}
+
+		/**
+		 * For simplicity, this project is going to avoid using repository classes.
+		 *
+		 * @return \Illuminate\Database\Eloquent\Builder
+		 */
+		public function find() {
+			return ImageModel::select();
 		}
 
 		/**
