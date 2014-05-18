@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "8c0020dc1a37c6089d3275a1be5c9e22",
+    "hash": "9083687add5b9ffafac13a34590b9ffa",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -776,12 +776,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpseclib/phpseclib.git",
-                "reference": "3a309d36edd85451cf51b63adcbc6899c5211ae2"
+                "reference": "7d2a3279c649485cdb0f532eecbc44dce0e46c38"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpseclib/phpseclib/zipball/3a309d36edd85451cf51b63adcbc6899c5211ae2",
-                "reference": "3a309d36edd85451cf51b63adcbc6899c5211ae2",
+                "url": "https://api.github.com/repos/phpseclib/phpseclib/zipball/7d2a3279c649485cdb0f532eecbc44dce0e46c38",
+                "reference": "7d2a3279c649485cdb0f532eecbc44dce0e46c38",
                 "shasum": ""
             },
             "require": {
@@ -865,7 +865,7 @@
                 "x.509",
                 "x509"
             ],
-            "time": "2014-05-05 22:49:44"
+            "time": "2014-05-18 21:20:58"
         },
         {
             "name": "predis/predis",
@@ -1605,12 +1605,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/HttpKernel.git",
-                "reference": "fa75273d3ef25848dc98313999eb23fd0419e6e9"
+                "reference": "963f9ed3171b166b826786c36424d1302c37580a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/HttpKernel/zipball/fa75273d3ef25848dc98313999eb23fd0419e6e9",
-                "reference": "fa75273d3ef25848dc98313999eb23fd0419e6e9",
+                "url": "https://api.github.com/repos/symfony/HttpKernel/zipball/963f9ed3171b166b826786c36424d1302c37580a",
+                "reference": "963f9ed3171b166b826786c36424d1302c37580a",
                 "shasum": ""
             },
             "require": {
@@ -1671,7 +1671,7 @@
             ],
             "description": "Symfony HttpKernel Component",
             "homepage": "http://symfony.com",
-            "time": "2014-05-17 20:48:44"
+            "time": "2014-05-18 15:36:54"
         },
         {
             "name": "symfony/process",

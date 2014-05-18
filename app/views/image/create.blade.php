@@ -15,14 +15,14 @@
 				<li>
 
 					<label for="uri">URI</label>
-					<input name="uri" id="uri" type="text" value="{{{ $data['uri'] }}}" placeholder="http://goo.gl/XhqYpv" />
+					<input name="uri" id="uri" type="text" value="{{ $data['uri'] or '' }}" placeholder="http://goo.gl/XhqYpv" />
 
-					@if($uriMessages = @$data->errors->get('uri'))
-						<ul class="validation-errors">
+					@if(isset($data) and $uriMessages = $data->getErrorsFor('uri'))
+					<ul class="validation-errors">
 						@foreach($uriMessages as $uriMessage)
-							<li>{{ $uriMessage }}</li>
+						<li>{{ $uriMessage }}</li>
 						@endforeach
-						</ul>
+					</ul>
 					@endif
 
 				</li>

@@ -13,7 +13,7 @@
 
 		<div id="header">
 
-			<h1>Laravel 201</h1>
+			<h1><a href="/">Laravel 201</a></h1>
 
 			<ul class="menu">
 				<li>
