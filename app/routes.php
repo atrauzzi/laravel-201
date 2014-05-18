@@ -11,4 +11,11 @@
 |
 */
 
-
+// Typical rest style routing.
+Route::get('/', 'Laravel201\Web\Controller\Image@index');
+Route::get('/{id}', 'Laravel201\Web\Controller\Image@show');
+Route::get('/create', 'Laravel201\Web\Controller\Image@create');
+Route::post('/', 'Laravel201\Web\Controller\Image@store');
+// Customized batch uploading.
+Route::get('/batch-create', 'Laravel201\Web\Controller\Image@create');
+Route::post('/batch-create', 'Laravel201\Web\Controller\Image@store');

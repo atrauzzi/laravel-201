@@ -42,6 +42,8 @@
 		}
 
 		public function index() {
+
+
 		}
 
 		//
@@ -62,7 +64,7 @@
 			$imageStoreData = ImageStore::make();
 
 			if($imageStoreData->valid())
-				$image = $this->imageService->saveFromUri();
+				$image = $this->imageService->saveFromUri($imageStoreData->get('uri'));
 			else
 				echo "hi";
 
@@ -87,7 +89,7 @@
 			$imageBatchStore = ImageBatchStore::make();
 
 			if($imageBatchStore->valid())
-				$this->imageService->batchSaveFromUris($uri);
+				$this->imageService->batchSaveFromUris($imageBatchStore->get('uris'));
 			else
 				echo "hi";
 

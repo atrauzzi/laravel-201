@@ -6,7 +6,7 @@
 	class ImageBatchStore extends Base {
 
 		protected $rules = [
-			'image_uris' => 'required|array'
+			'uris' => 'required|array|size:10'
 		];
 
 	}

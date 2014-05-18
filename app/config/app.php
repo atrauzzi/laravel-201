@@ -122,6 +122,15 @@
 		//
 		//
 
+		'TippingCanoe\Validator\ServiceProvider',
+		'TippingCanoe\Imager\ServiceProvider',
+
+		//
+		//
+		//
+
+		'Laravel201\ServiceProvider',
+
 	],
 
 	/*
