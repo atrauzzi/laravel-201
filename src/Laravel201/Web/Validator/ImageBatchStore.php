@@ -9,6 +9,8 @@
 			'uris' => 'required|array|size:10'
 		];
 
+		protected $autoPopulate = true;
+
 	}
 
 }

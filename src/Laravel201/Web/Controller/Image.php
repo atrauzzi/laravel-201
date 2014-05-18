@@ -65,6 +65,7 @@
 		 * Displays the form for single image submission.
 		 */
 		public function create() {
+			return new Response($this->view->make('image/create'));
 		}
 
 		/**
@@ -77,7 +78,7 @@
 			if($imageStoreData->valid())
 				$image = $this->imageService->saveFromUri($imageStoreData->get('uri'));
 			else
-				echo "hi";
+				return new Response($this->view->make('image/create', ['data' => $imageStoreData]));
 
 
 		}

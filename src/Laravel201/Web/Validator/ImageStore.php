@@ -9,6 +9,8 @@
 			'uri' => 'required|url'
 		];
 
+		protected $autoPopulate = true;
+
 	}
 
 }

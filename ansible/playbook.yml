@@ -92,6 +92,9 @@
       mysql_db: name=laravel201 state=present
       notify: Restart MySQL
 
+    - name: Enable mod_rewrite
+      command: a2enmod rewrite
+
     - name: Create our VirtualHost
       copy: src=laravel-201.conf dest=/etc/apache2/sites-available/ mode=0644
 
