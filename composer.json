@@ -11,7 +11,7 @@
 	"autoload": {
 		"psr-0": {
 			"Laravel201": "src/"
-		},	
+		},
 		"classmap": [
 			"app/database/migrations",
 			"app/database/seeds"

@@ -3,8 +3,16 @@
 - hosts: all
   tasks:
 
+    # System
     - name: Installing Avahi
       apt: name=avahi-daemon state=present
+
+    - name: Installing CURL
+      apt: name=curl state=present
+
+    # PHP
+    - name: Installing PHP5 CLI
+      apt: name=php5-cli state=present
 
     - name: Not being evil and installing PHP JSON
       apt: name=php5-json state=present
@@ -15,16 +23,41 @@
     - name: Installing PHP MCrypt
       apt: name=php5-mcrypt state=present
 
+    - name: Installing PHP GD
+      apt: name=php5-gd state=present
+
+    - name: Installing PHP Curl
+      apt: name=php5-curl state=present
+
     - name: Enabling MCrypt module
       command: php5enmod mcrypt
 
-  handlers:
-    - name: Restart Avahi
-      service: name=avahi-daemon state=restarted
+    #
+    # Composer
+    #
+    # In order to automate installation of dependencies, you must set up some form of authentication for github.
+    #
+    # This unfortunately means I can't have the VMs do all this themselves, bur rest assured if github auth is configured, these lines work!
+    #
+    #- name: Install composer
+    #  shell: curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin creates=/usr/local/bin/composer
+    #  tags: composer
+
+    #- name: Rename composer.phar to composer
+    #  shell: mv /usr/local/bin/composer.phar /usr/local/bin/composer creates=/usr/local/bin/composer
+    #  tags: composer
+
+    #- name: Make composer executable
+    #  shell: chmod a+x /usr/local/bin/composer
+    #  tags: composer
+
+    #- name: Install Project Dependencies
+    #  shell: composer install --prefer-source --no-interaction -n > app/storage/logs/composer.log chdir=/vagrant
 
 
 - hosts: front
   tasks:
+
     - name: Installing PHP and Apache
       apt: name=libapache2-mod-php5 state=present
 
@@ -63,10 +96,3 @@
   handlers:
     - name: Restart Apache
       service: name=apache2 state=restarted
-
-
-- hosts: worker
-  tasks:
-    - name: Installing PHP5 CLI
-      apt: name=php5-cli state=present
-
