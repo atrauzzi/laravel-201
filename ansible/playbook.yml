@@ -7,6 +7,9 @@
     - name: Installing Avahi
       apt: name=avahi-daemon state=present
 
+    - name: Installing Samba
+      apt: name=samba state=present
+
     - name: Installing CURL
       apt: name=curl state=present
 
