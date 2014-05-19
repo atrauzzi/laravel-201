@@ -963,12 +963,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/stackphp/builder.git",
-                "reference": "b4af43e7b7f3f7fac919ff475b29f7c5dc7b23b7"
+                "reference": "d760dccb15e8db668c52359f8eb0ce3ecd37ce82"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/stackphp/builder/zipball/b4af43e7b7f3f7fac919ff475b29f7c5dc7b23b7",
-                "reference": "b4af43e7b7f3f7fac919ff475b29f7c5dc7b23b7",
+                "url": "https://api.github.com/repos/stackphp/builder/zipball/d760dccb15e8db668c52359f8eb0ce3ecd37ce82",
+                "reference": "d760dccb15e8db668c52359f8eb0ce3ecd37ce82",
                 "shasum": ""
             },
             "require": {
@@ -1005,7 +1005,7 @@
             "keywords": [
                 "stack"
             ],
-            "time": "2014-01-28 19:42:24"
+            "time": "2014-05-19 00:39:19"
         },
         {
             "name": "stojg/crop",
@@ -1962,12 +1962,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/TippingCanoe/validator.git",
-                "reference": "62aab192bf01f4d4a596dc38403d3dde4904fd36"
+                "reference": "d38a612c49052ab4044eb529c8d703d2cbf18d5c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/TippingCanoe/validator/zipball/62aab192bf01f4d4a596dc38403d3dde4904fd36",
-                "reference": "62aab192bf01f4d4a596dc38403d3dde4904fd36",
+                "url": "https://api.github.com/repos/TippingCanoe/validator/zipball/d38a612c49052ab4044eb529c8d703d2cbf18d5c",
+                "reference": "d38a612c49052ab4044eb529c8d703d2cbf18d5c",
                 "shasum": ""
             },
             "require": {
@@ -1987,7 +1987,7 @@
                 }
             ],
             "description": "Create validation profiles and work with the data and errors afterwards.",
-            "time": "2014-05-18 00:59:53"
+            "time": "2014-05-18 23:22:17"
         }
     ],
     "packages-dev": [
