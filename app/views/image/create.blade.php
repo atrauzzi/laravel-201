@@ -9,7 +9,7 @@
 	<form method="post" action="{{ URL::route('image.store') }}">
 		<fieldset>
 
-			<p>Provide an URI to an image here and it will be added to the system immediately.</p>
+			<p>Provide the URI to an image here and it will be added to the system immediately.</p>
 
 			<ul>
 				<li>
