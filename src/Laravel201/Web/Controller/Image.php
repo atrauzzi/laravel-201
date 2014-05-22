@@ -1,7 +1,9 @@
 <?php namespace Laravel201\Web\Controller {
 
+	use Illuminate\Http\RedirectResponse;
 	use Illuminate\Routing\Controller;
 	//
+	use Illuminate\Session\SessionManager;
 	use Laravel201\Service\Image as ImageService;
 	use Illuminate\View\Factory as ViewFactory;
 	//
@@ -10,6 +12,7 @@
 	//
 	use Illuminate\Http\Response;
 	use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+	use \Exception;
 
 
 	class Image extends Controller {
@@ -20,16 +23,22 @@
 		/** @var \Illuminate\View\Factory */
 		protected $view;
 
+		/** @var \Illuminate\Session\SessionManager|\Illuminate\Session\CacheBasedSessionHandler */
+		protected $session;
+
 		/**
 		 * @param \Laravel201\Service\Image $imageService
 		 * @param \Illuminate\View\Factory $view
+		 * @param \Illuminate\Session\SessionManager $session
 		 */
 		public function __construct(
 			ImageService $imageService,
-			ViewFactory $view
+			ViewFactory $view,
+			SessionManager $session
 		) {
 			$this->imageService = $imageService;
 			$this->view = $view;
+			$this->session = $session;
 		}
 
 		//
@@ -90,7 +99,8 @@
 		/**
 		 * Displays the form for multiple image submission.
 		 */
-		public function createBatch() {
+		public function batchCreate() {
+			return new Response($this->view->make('image/batch_create'));
 		}
 
 		/**
@@ -100,10 +110,30 @@
 
 			$imageBatchStore = ImageBatchStore::make();
 
-			if($imageBatchStore->valid())
-				$this->imageService->batchSaveFromUris($imageBatchStore->get('uris'));
-			else
-				echo "hi";
+			if($imageBatchStore->valid()) {
+
+				try {
+					$this->imageService->batchSaveFromUris($imageBatchStore->get('uris'));
+					$this->session->flash('notices', 'Your batch has been queued for processing!');
+					$response = new RedirectResponse('/');
+				}
+				catch(Exception $ex) {
+					$errors = [
+						$ex->getMessage()
+					];
+					$response = new Response($this->view->make('image/batch_create', [
+						'data' => $imageBatchStore
+					])->withErrors($errors));
+				}
+
+			}
+			else {
+				$response = new Response($this->view->make('image/batch_create', [
+					'data' => $imageBatchStore,
+				])->withErrors($imageBatchStore->errors));
+			}
+
+			return $response;
 
 		}
 

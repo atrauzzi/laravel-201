@@ -14,8 +14,7 @@
 // Typical rest style routing.
 Route::get('/', 'Laravel201\Web\Controller\Image@index');
 Route::get('/create', ['as' => 'image.create', 'uses' => 'Laravel201\Web\Controller\Image@create']);
+Route::get('/batch-create', ['as' => 'image.batch_create', 'uses' => 'Laravel201\Web\Controller\Image@batchCreate']);
+Route::post('/batch-create', ['as' => 'image.batch_store', 'uses' => 'Laravel201\Web\Controller\Image@batchStore']);
 Route::get('/{id}', ['as' => 'image.show', 'uses' => 'Laravel201\Web\Controller\Image@show']);
 Route::post('/', ['as' => 'image.store', 'uses' => 'Laravel201\Web\Controller\Image@store']);
-// Customized batch uploading.
-Route::get('/batch-create', ['as' => 'image.batch_create', 'uses' => 'Laravel201\Web\Controller\Image@create']);
-Route::post('/batch-create', ['as' => 'image.batch_store', 'uses' => 'Laravel201\Web\Controller\Image@store']);

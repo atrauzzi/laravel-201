@@ -27,7 +27,15 @@
 		</div>
 
 		<div id="content">
+
+			@if($notices = Session::get('notices'))
+			@foreach($notices as $notice)
+			<div class="notice">{{ $notice }}</div>
+			@endforeach
+			@endif
+
 			@yield('content')
+
 		</div>
 
 		<a href="https://github.com/atrauzzi/laravel-201">

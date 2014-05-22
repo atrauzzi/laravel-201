@@ -16,6 +16,7 @@
 			// This then allows for the instance to be injected into any others that request it.
 			$this->app->bind('Illuminate\Queue\QueueManager', 'queue');
 			$this->app->bind('Illuminate\View\Factory', 'view');
+			$this->app->bind('Illuminate\Session\SessionManager', 'session');
 
 		}
 
