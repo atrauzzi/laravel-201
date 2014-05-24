@@ -42,7 +42,7 @@ Special care must be taken to ensure that multiple servers are not started on th
 
 You should however be able to run as many workers as you wish.
 
-All nodes run Ubuntu, with avahi and samba installed to ensure they are visible on the network via Samba and Zeroconf.
+All nodes run Ubuntu, with avahi and samba installed to ensure they are visible on the network via UPnP and Zeroconf.
 
 
 ### Front
