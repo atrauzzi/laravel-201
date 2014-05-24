@@ -33,9 +33,14 @@
 		<div id="content">
 
 			@if($notices = Session::get('notices'))
-			@foreach($notices as $notice)
-			<div class="notice">{{ $notice }}</div>
-			@endforeach
+				@if(is_array($notices))
+					@foreach($notices as $notice)
+					<div class="notice">{{ $notice }}</div>
+					@endforeach
+				@else
+					<div class="notice">{{ $notices }}</div>
+				@endif
+
 			@endif
 
 			@yield('content')

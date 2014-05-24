@@ -41,8 +41,6 @@
 
 		<button>Save</button>
 
-		<button type="button" onclick="addRow();">Add Another</button>
-
 	</fieldset>
 </form>
 

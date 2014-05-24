@@ -65,7 +65,8 @@
 			// What we accomplish here is to separate out each individual URI submitted as individual jobs.
 			// This allows the work to be spread out across multiple workers rather than clumped together on one.
 			foreach($uris as $uri)
-				$this->queue->push('Laravel201\Handler\ImageSave', $uri);
+				if($uri)
+					$this->queue->push('Laravel201\Handler\ImageSave', $uri);
 
 		}
 
