@@ -20,34 +20,19 @@
 		@endif
 
 		<ul class="uris">
-			@if(!empty($data) && count($data->get('uris')))
-			@foreach($data->get('uris') as $key => $uri)
+
+			@foreach(range(0,9) as $key)
 			<li>
 				<label for="uri-{{ $key }}">URI {{ $key + 1 }}</label>
 				<input
 					name="uris[]"
 					id="uri-{{ $key }}"
 					type="text"
-					value="{{ $uri }}"
+					value="{{ !empty($data) ? $data->get('uris')[$key] : null }}"
 					placeholder="http://goo.gl/XhqYpv"
 				/>
 			</li>
 			@endforeach
-			@else
-				<?php $key = -1; ?>
-			@endif
-
-			<?php ++$key; ?>
-			<li>
-				<label for="uri{{ $key }}">URI {{ $key + 1 }}</label>
-				<input
-					name="uris[]"
-					id="uri-{{ $key }}"
-					type="text"
-					value=""
-					placeholder="http://goo.gl/XhqYpv"
-				/>
-			</li>
 
 		</ul>
 
@@ -55,6 +40,8 @@
 	<fieldset>
 
 		<button>Save</button>
+
+		<button type="button" onclick="addRow();">Add Another</button>
 
 	</fieldset>
 </form>
