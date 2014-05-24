@@ -9,6 +9,7 @@
 			@show
 		</title>
 
+		<link rel="stylesheet" type="text/css" href="/main.css" />
 		<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 
 	</head>
@@ -20,12 +21,16 @@
 			<h1><a href="/">Laravel 201</a></h1>
 
 			<ul class="menu">
-				<li>
+
+				<li class="global">
 					<a href="{{ URL::route('image.create') }}">Submit One</a>
 				</li>
-				<li>
+				<li class="global">
 					<a href="{{ URL::route('image.batch_create') }}">Submit Multiple</a>
 				</li>
+
+				@yield('menu')
+
 			</ul>
 
 		</div>
