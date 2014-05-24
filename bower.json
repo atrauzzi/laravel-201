@@ -1,0 +1,19 @@
+{
+    "name": "laravel-201",
+    "version": "0.0.0",
+    "authors": [
+        "Alexander Trauzzi <atrauzzi@gmail.com>"
+    ],
+    "license": "Private",
+    "private": true,
+    "ignore": [
+        "**/.*",
+        "node_modules",
+        "bower_components",
+        "public/vendor",
+        "test",
+        "tests"
+    ],
+    "dependencies": {
+    }
+}
