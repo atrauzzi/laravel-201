@@ -35,6 +35,9 @@
     - name: Enabling MCrypt module
       command: php5enmod mcrypt
 
+    - name: Installing git
+      apt: name=git state=present
+
     #
     # Composer
     #
@@ -42,20 +45,20 @@
     #
     # This unfortunately means I can't have the VMs do all this themselves, bur rest assured if github auth is configured, these lines work!
     #
-    #- name: Install composer
-    #  shell: curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin creates=/usr/local/bin/composer
-    #  tags: composer
+    - name: Install composer
+      shell: curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin creates=/usr/local/bin/composer
+      tags: composer
 
-    #- name: Rename composer.phar to composer
-    #  shell: mv /usr/local/bin/composer.phar /usr/local/bin/composer creates=/usr/local/bin/composer
-    #  tags: composer
+    - name: Rename composer.phar to composer
+      shell: mv /usr/local/bin/composer.phar /usr/local/bin/composer creates=/usr/local/bin/composer
+      tags: composer
 
-    #- name: Make composer executable
-    #  shell: chmod a+x /usr/local/bin/composer
-    #  tags: composer
+    - name: Make composer executable
+      shell: chmod a+x /usr/local/bin/composer
+      tags: composer
 
-    #- name: Install Project Dependencies
-    #  shell: composer install --prefer-source --no-interaction -n > app/storage/logs/composer.log chdir=/vagrant
+    - name: Install Project Dependencies
+      shell: composer install --prefer-source --no-interaction -n > app/storage/logs/composer.log chdir=/vagrant
 
 
 - hosts: front

@@ -76,8 +76,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # backing providers for Vagrant. These expose provider-specific options.
   # Example for VirtualBox:
   #
-  #config.vm.provider "virtualbox" do |vb|
+  config.vm.provider "virtualbox" do |vb|
+    vb.memory = 384
   #  vb.auto_nat_dns_proxy = true
-  #end
+  end
 
 end
