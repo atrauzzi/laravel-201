@@ -23,6 +23,9 @@
 			<ul class="menu">
 
 				<li class="global">
+					<a href="/">Home</a>
+				</li>
+				<li class="global">
 					<a href="{{ URL::route('image.create') }}">Submit One</a>
 				</li>
 				<li class="global">

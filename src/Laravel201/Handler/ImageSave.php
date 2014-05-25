@@ -23,8 +23,11 @@
 		 */
 		public function fire(Job $job, $uri) {
 
-			// ToDo: Introduce an artificial delay here, just to guarantee presentation quality.
+			// The save from a URI should be pokey enough, but let's just add some more time to be certain.
+			sleep(10);
+
 			$this->imageService->saveFromUri($uri);
+
 			$job->delete();
 
 		}

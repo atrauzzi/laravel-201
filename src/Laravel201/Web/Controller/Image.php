@@ -52,6 +52,12 @@
 		//
 		//
 
+		/**
+		 * A simple show action.
+		 *
+		 * @param int $id
+		 * @return Response
+		 */
 		public function show($id) {
 
 			$image = $this->getById($id);
