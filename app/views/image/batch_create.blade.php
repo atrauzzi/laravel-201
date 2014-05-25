@@ -18,7 +18,7 @@
 	</ul>
 	@endif
 
-	<ul class="uris">
+	<ul class="new-uris">
 
 		@foreach(range(0,9) as $key)
 		<li>

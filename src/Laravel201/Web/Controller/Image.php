@@ -3,6 +3,7 @@
 	use Illuminate\Http\RedirectResponse;
 	use Illuminate\Routing\Controller;
 	//
+	use Illuminate\Routing\UrlGenerator;
 	use Illuminate\Session\SessionManager;
 	use Laravel201\Service\Image as ImageService;
 	use Illuminate\View\Factory as ViewFactory;
@@ -23,21 +24,27 @@
 		/** @var \Illuminate\View\Factory */
 		protected $view;
 
+		/** @var \Illuminate\Routing\UrlGenerator */
+		protected $url;
+
 		/** @var \Illuminate\Session\SessionManager|\Illuminate\Session\CacheBasedSessionHandler */
 		protected $session;
 
 		/**
 		 * @param \Laravel201\Service\Image $imageService
+		 * @param \Illuminate\Routing\UrlGenerator $url
 		 * @param \Illuminate\View\Factory $view
 		 * @param \Illuminate\Session\SessionManager $session
 		 */
 		public function __construct(
 			ImageService $imageService,
+			UrlGenerator $url,
 			ViewFactory $view,
 			SessionManager $session
 		) {
 			$this->imageService = $imageService;
 			$this->view = $view;
+			$this->url = $url;
 			$this->session = $session;
 		}
 
@@ -47,7 +54,11 @@
 
 		public function show($id) {
 
-			$image = $this->getImageById($id);
+			$image = $this->getById($id);
+
+			return new Response($this->view->make('image/show', [
+				'image' => $image
+			]));
 
 		}
 
@@ -84,11 +95,12 @@
 
 			$imageStoreData = ImageStore::make();
 
-			if($imageStoreData->valid())
-				$image = $this->imageService->saveFromUri($imageStoreData->get('uri'));
-			else
+			if(!$imageStoreData->valid())
 				return new Response($this->view->make('image/create', ['data' => $imageStoreData]));
 
+			$image = $this->imageService->saveFromUri($imageStoreData->get('uri'));
+
+			return new RedirectResponse($this->url->route('image.show', $image->getKey()));
 
 		}
 
@@ -118,12 +130,14 @@
 					$response = new RedirectResponse('/');
 				}
 				catch(Exception $ex) {
-					$errors = [
-						$ex->getMessage()
-					];
-					$response = new Response($this->view->make('image/batch_create', [
-						'data' => $imageBatchStore
-					])->withErrors($errors));
+					$response = new Response(
+						$this->view->make('image/batch_create', [
+							'data' => $imageBatchStore
+						])
+						->withErrors([
+							$ex->getMessage()
+						])
+					);
 				}
 
 			}
