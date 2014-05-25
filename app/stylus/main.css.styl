@@ -6,6 +6,12 @@
 
 html
   padding-bottom 12em
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 
 body
   font-family "Noto Sans" "Ubuntu" "Helvetica" sans-serif
@@ -17,7 +23,6 @@ body
   padding-left 3em
   padding-right 3em
   overflow-x hidden
-
 
 a
   text-decoration none
@@ -93,3 +98,26 @@ p
       border none
       padding 0.5em
       width 17em
+
+.images
+
+  padding 0em
+  margin 0em
+
+  > li
+    display inline-block
+    list-style none
+    margin-right 5em
+    margin-bottom 2em
+    text-align center
+    width 215px
+    height 215px
+    line-height 205px
+    background-color rgba(0,0,0, 1)
+
+    *
+      display inline-block
+      vertical-align middle
+
+    &:nth-of-type(5n+1)
+      clear left

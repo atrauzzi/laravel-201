@@ -8,7 +8,7 @@
 
 <form method="post" action="{{ URL::route('image.batch_create') }}" id="batch-create">
 
-	<p>Supply each URI you wish to have added here.</p>
+	<p>Supply the URI to each image you wish to have added here and they'll be queued for processing.</p>
 
 	@if(!empty($errors))
 	<ul class="errors">
