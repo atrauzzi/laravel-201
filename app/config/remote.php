@@ -1,6 +1,4 @@
-<?php
-
-return array(
+<?php return [
 
 	/*
 	|--------------------------------------------------------------------------
@@ -26,18 +24,18 @@ return array(
 	|
 	*/
 
-	'connections' => array(
+	'connections' => [
 
-		'production' => array(
-			'host'      => '',
-			'username'  => '',
-			'password'  => '',
-			'key'       => '',
-			'keyphrase' => '',
-			'root'      => '/var/www',
-		),
+		'production' => [
+			'host'      => 'laravel201front',
+			'username'  => 'worker',
+			'password'  => 'worker',
+			//'key'       => '',
+			//'keyphrase' => '',
+			'root'      => '/vagrant/public/imager',
+		],
 
-	),
+	],
 
 	/*
 	|--------------------------------------------------------------------------
@@ -50,10 +48,10 @@ return array(
 	|
 	*/
 
-	'groups' => array(
+	'groups' => [
+		'web' => [
+			'production'
+		]
+	],
 
-		'web' => array('production')
-
-	),
-
-);
+];

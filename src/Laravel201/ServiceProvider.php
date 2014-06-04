@@ -17,6 +17,7 @@
 			$this->app->bind('Illuminate\Queue\QueueManager', 'queue');
 			$this->app->bind('Illuminate\View\Factory', 'view');
 			$this->app->bind('Illuminate\Session\SessionManager', 'session');
+			$this->app->bind('Illuminate\Remote\RemoteManager', 'remote');
 
 		}
 

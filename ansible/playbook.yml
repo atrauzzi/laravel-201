@@ -118,6 +118,9 @@
     - name: Run Imager migrations
       shell: ./artisan migrate --force --package="tippingcanoe/imager" > app/storage/logs/imager_migrations.log chdir=/vagrant
 
+    - name: Create SSH user for workers
+      action: user name=worker password=$6$J4gaHlKW$A7uYZ/lr/8s3k/ytTJKSS4U9NEe60puKgYFmvZLHvT8QWcvRJx5UcxCSL9yrpXFNgBEfmWQLMSV4EjKQes3lI. shell=/bin/bash groups=vagrant
+
   handlers:
     - name: Restart Apache
       service: name=apache2 state=restarted
