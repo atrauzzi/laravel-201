@@ -10,6 +10,7 @@
 			@include('image/_tile', ['image' => $image])
 		</li>
 		@endforeach
+
 	</ul>
 
 	@else
@@ -19,3 +20,15 @@
 	@endif
 
 @overwrite
+
+@section('menu')
+
+	@if($images->getCurrentPage() < $images->getLastPage())
+	<li><a href="{{ $images->getUrl($images->getCurrentPage() + 1) }}">Next</a></li>
+	@endif
+
+	@if($images->getCurrentPage() > 1)
+	<li><a href="{{ $images->getUrl($images->getCurrentPage() - 1) }}">Previous</a></li>
+	@endif
+
+@append
