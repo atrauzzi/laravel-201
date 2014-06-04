@@ -27,7 +27,7 @@
 	'connections' => [
 
 		'production' => [
-			'host'      => 'laravel201front',
+			'host'      => 'laravel201front.local',
 			'username'  => 'worker',
 			'password'  => 'worker',
 			//'key'       => '',

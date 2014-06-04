@@ -42,7 +42,7 @@
 		 * @param array $filters
 		 */
 		public function saveFile(File $file, Image $image, array $filters = []) {
-			$this->ssh->put($file->getRealPath(), $this->generateFileName($image, $filters));
+			$this->ssh->put($file->getRealPath(), '/vagrant/public/imager/' . $this->generateFileName($image, $filters));
 		}
 
 		/**
