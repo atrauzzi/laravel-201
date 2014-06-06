@@ -20,6 +20,9 @@
     - name: Not being evil and installing PHP JSON
       apt: name=php5-json state=present
 
+    - name: Installing PHP MySQL
+      apt: name=php5-mysql state=present
+
     - name: Installing PHP Redis
       apt: name=php5-redis state=present
 
@@ -64,6 +67,9 @@
 - hosts: front
   tasks:
 
+    - name: Cleaning images directory
+      command: rm /vagrant/public/imager/* -Rf
+
     - name: Installing Python MySQL
       apt: name=python-mysqldb state=present
 
@@ -90,9 +96,6 @@
 
     - name: Granting root login from anywhere
       mysql_user: name=root priv=*.*:ALL password='' host=% state=present
-
-    - name: Installing PHP MySQL
-      apt: name=php5-mysql state=present
 
     - name: Creating MySQL Schema
       mysql_db: name=laravel201 state=present
