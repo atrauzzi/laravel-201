@@ -60,6 +60,9 @@
       shell: chmod a+x /usr/local/bin/composer
       tags: composer
 
+    - name: Clean vendor directory
+      shell: rm /vagrant/vendor/* -Rf
+
     - name: Install Project Dependencies
       shell: composer install --prefer-source --no-interaction -n > app/storage/logs/composer.log chdir=/vagrant
 
@@ -68,7 +71,7 @@
   tasks:
 
     - name: Cleaning images directory
-      command: rm /vagrant/public/imager/* -Rf
+      shell: rm /vagrant/public/imager/* -Rf
 
     - name: Installing Python MySQL
       apt: name=python-mysqldb state=present
